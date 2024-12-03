@@ -3,7 +3,7 @@
 int main() {
 	int a[100][100];
 	while(1) {
-		printf("\n\tMENU\n");
+		printf("\nMENU\n");
 		printf("\n1. Nhap kich co va gia tri cac phan tu cua mang.\n");
 		printf("2. In gia tri cac phan tu cua mang theo ma tran.\n");
 		printf("3. In ra cac phan tu nam tren duong bien va tinh tich.\n");
@@ -89,30 +89,31 @@ int main() {
 					printf("Mang khong phai ma tran vuong.\n");
 				break;
 			case 7:
-				printf("Nhap mot so de kiem tra: ");
-				scanf("%d", &value);
+    			printf("Nhap mot so de kiem tra: ");
+    			scanf("%d", &value);
 
-				found = -1;
-				count = 0;
+   				found = 0;
+    			count = 0;
 
-				printf("So %d xuat hien trong mang o vi tri: ", value);
-				for (int i = 0; i < row; ++i) {
-					for (int j = 0; j < col; ++j) {
-						if (a[i][j] == value) {
-							printf("(%d, %d) ", i+1, j+1);
-							found = 1;
-							++count;
-						}
-					}
-				}
+			    for (int i = 0; i < row; ++i) {
+			        for (int j = 0; j < col; ++j) {
+			            if (a[i][j] == value) {
+			                if (!found) {
+			                    printf("So %d xuat hien trong mang o vi tri: ", value);
+			                    found = 1;
+			                }
+			                printf("(%d, %d) ", i + 1, j + 1);
+			                ++count;
+			            }
+			        }
+			    }
 
-				if (found == -1) {
-					printf("\nKhong tim thay gia tri %d trong mang.\n", value);
-				} else {
-					printf("\nTong so lan xuat hien: %d\n", count);
-				}
-				break;
-
+			    if (found) {
+			        printf("\nTong so lan xuat hien: %d\n", count);
+			    }
+			    else 
+			    	printf("\nKhong tim thay gia tri %d trong mang.\n", value);
+			    break;
 			case 8:
 				printf("Hen gap lai.");
 				return 0;
